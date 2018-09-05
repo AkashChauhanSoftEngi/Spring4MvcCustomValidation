@@ -36,3 +36,9 @@
 ```java
 	WebDataBinder.setValidator(custom validator bean);
 ```
+* There is a another way for custom validation{without using @IntiBinder}
+```java
+	//userValidator{bean in IOC}
+	//bindingResult from BindingResult{from request}
+	userValidator.validate(userForm, bindingResult);
+```
