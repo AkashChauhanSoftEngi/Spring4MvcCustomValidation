@@ -18,3 +18,21 @@
 > **###3.  Access** 
 * http://localhost:8080/Spring4MvcValidation
 
+> **###4. Important points to keep in mind**
+* When you are using Custom Validation you need to create a validation class(in IOC)
+  - which implement validator interface
+  - and over validate(Object target, Errors errors) {} method
+* For custom Validation, you need to use @Validated instead @Valid
+  - This is, spring validation, not javax{@Valid}
+```java
+	@RequestMapping(value = "doSuccess", method = RequestMethod.POST)
+	public String saveRegistration(@Validated Student student,
+			BindingResult result, ModelMap model) {}
+```
+* If @Validated finds error it will store those erros in BindingResult result
+* JSP pages use values from BindingResult and ger error message from the result itself and then show with the form
+* Before even using such custom validation
+  - we need to bind, created validator with WebDataBinder, using @InitBinder
+```java
+	WebDataBinder.setValidator(custom validator bean);
+```
