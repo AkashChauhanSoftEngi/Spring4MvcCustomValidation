@@ -53,7 +53,7 @@ public class HelloWorldController {
 	/*
 	 * This method will be called on form submission, handling POST request It
 	 * also validates the user input
-	 * Using Javax validation
+	 * Using Custom validation
 	 */
 	@RequestMapping(value = "doSuccess", method = RequestMethod.POST)
 	public String saveRegistration(@Validated Student student,
